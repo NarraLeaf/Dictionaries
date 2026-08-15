@@ -15,6 +15,10 @@ does not apply affix rules.
 A list covering a language should carry every spelling that language accepts. `en` holds both
 `colour` and `color`; marking either would be wrong for half the people writing in English.
 
+Chinese and Japanese are not written with spaces, so Studio segments a run against the list
+instead of looking single tokens up. Those lists therefore need their single-character words
+(你, 的, 是) as entries of their own, or every sentence would segment into nothing.
+
 ## `index.json`
 
     {
@@ -47,14 +51,13 @@ match. An entry that omits its licence is dropped rather than shown.
 A language whose only available list is copyleft is left out rather than quietly included:
 these lists are redistributed to everyone who installs one.
 
-## Languages without a dictionary
-
-Chinese and Japanese have none and will not get one. Neither language separates words, so a
-word list has nothing to check against. Studio says so in its settings rather than offering a
-control that does nothing.
-
 ## Sources
 
+- `zh` — the surface forms of [jieba](https://github.com/fxsjy/jieba)'s dictionary, MIT, Copyright
+  (c) 2013 Sun Junyi. Notice in `COPYRIGHT-JIEBA`.
+- `ja` — the surface forms of [IPAdic](https://github.com/taku910/mecab), Copyright 2000-2003 Nara
+  Institute of Science and Technology, redistribution permitted with the notice kept. Notice in
+  `COPYRIGHT-IPADIC`.
 - `en` — derived from [SCOWL](http://wordlist.aspell.net/) 2020.12.07, sizes 10 to 60,
   English, American and British forms combined. SCOWL's copyright notice is in
   `COPYRIGHT-SCOWL`; its permission grant covers the output of its scripts, which is what this

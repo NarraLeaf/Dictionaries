@@ -10,6 +10,24 @@
             "sha256": "24acf011ec36a70bbf2f34e9858f9f22dca2b41c980cf8849bf7a0d97e8f7eed",
             "download": "https://raw.githubusercontent.com/NarraLeaf/Dictionaries/master/en.txt.gz",
             "words": 104433
+        },
+        {
+            "code": "zh",
+            "name": "中文",
+            "bytes": 1391091,
+            "license": "MIT",
+            "sha256": "e9e39167a7b3b15ddab0875272681b44cf839fd78c7a9f3c7f03e4a1c8100c38",
+            "download": "https://raw.githubusercontent.com/NarraLeaf/Dictionaries/master/zh.txt.gz",
+            "words": 349040
+        },
+        {
+            "code": "ja",
+            "name": "日本語",
+            "bytes": 1140741,
+            "license": "NAIST IPAdic (BSD-style, attribution required)",
+            "sha256": "e4b38995f9a810e5085c9268f5f7d628636b8417b11c9c56c88689e05269e4ae",
+            "download": "https://raw.githubusercontent.com/NarraLeaf/Dictionaries/master/ja.txt.gz",
+            "words": 324957
         }
     ]
 }
