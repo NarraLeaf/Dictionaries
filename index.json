@@ -1,0 +1,15 @@
+{
+    "formatVersion": 1,
+    "repository": "https://github.com/NarraLeaf/Dictionaries",
+    "dictionaries": [
+        {
+            "code": "en",
+            "name": "English",
+            "bytes": 269055,
+            "license": "SCOWL (BSD-style, attribution required)",
+            "sha256": "24acf011ec36a70bbf2f34e9858f9f22dca2b41c980cf8849bf7a0d97e8f7eed",
+            "download": "https://raw.githubusercontent.com/NarraLeaf/Dictionaries/master/en.txt.gz",
+            "words": 104433
+        }
+    ]
+}
