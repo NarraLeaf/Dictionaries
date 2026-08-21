@@ -53,10 +53,13 @@ Republishing a language means new bytes, and a new `sha256` and `bytes` in `inde
 digest is checked against what was just downloaded, so an entry left stale here does not
 corrupt a cache - it makes the download fail.
 
-**An author who already has the language keeps the copy they downloaded.** Nothing is fetched
-in the background, and a correction reaches an existing install only when they ask for the
-language again. Say what changed in the commit message: it is the only place the difference is
-recorded.
+**Nothing is ever fetched in the background.** An author who already has the language keeps the
+copy they downloaded until they ask for it again - and the moment they can is *Browse
+dictionaries*, where Studio compares the digest it holds against this file and offers a language
+whose digest has moved as an update rather than hiding it as installed. So a correction reaches
+a new install straight away and an existing one when they next look.
+
+Say what changed in the commit message: it is the only place the difference is recorded.
 
 **Only permissively licensed lists are accepted**, and the licence text ships beside them.
 A language whose only available list is copyleft is left out rather than quietly included:
