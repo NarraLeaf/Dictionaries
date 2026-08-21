@@ -47,6 +47,17 @@ match. An entry that omits its licence is dropped rather than shown.
 2. Add the file and an `index.json` entry with the real size, digest and licence.
 3. Open a pull request. Say where the words came from.
 
+## Changing a list that is already published
+
+Republishing a language means new bytes, and a new `sha256` and `bytes` in `index.json`. The
+digest is checked against what was just downloaded, so an entry left stale here does not
+corrupt a cache - it makes the download fail.
+
+**An author who already has the language keeps the copy they downloaded.** Nothing is fetched
+in the background, and a correction reaches an existing install only when they ask for the
+language again. Say what changed in the commit message: it is the only place the difference is
+recorded.
+
 **Only permissively licensed lists are accepted**, and the licence text ships beside them.
 A language whose only available list is copyleft is left out rather than quietly included:
 these lists are redistributed to everyone who installs one.
@@ -59,6 +70,8 @@ these lists are redistributed to everyone who installs one.
   Institute of Science and Technology, redistribution permitted with the notice kept. Notice in
   `COPYRIGHT-IPADIC`.
 - `en` — derived from [SCOWL](http://wordlist.aspell.net/) 2020.12.07, sizes 10 to 60,
-  English, American and British forms combined. SCOWL's copyright notice is in
-  `COPYRIGHT-SCOWL`; its permission grant covers the output of its scripts, which is what this
-  list is. Copyright 2000-2018 by Kevin Atkinson.
+  English, American and British forms combined. Both the `words` and the `contractions`
+  categories: the first release of this list took `words` alone, and since SCOWL keeps `don't`
+  and `you've` in a category of their own, a line of dialogue came back almost entirely
+  underlined. SCOWL's copyright notice is in `COPYRIGHT-SCOWL`; its permission grant covers the
+  output of its scripts, which is what this list is. Copyright 2000-2018 by Kevin Atkinson.

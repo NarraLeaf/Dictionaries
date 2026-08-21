@@ -5,11 +5,11 @@
         {
             "code": "en",
             "name": "English",
-            "bytes": 269055,
+            "bytes": 269348,
             "license": "SCOWL (BSD-style, attribution required)",
-            "sha256": "24acf011ec36a70bbf2f34e9858f9f22dca2b41c980cf8849bf7a0d97e8f7eed",
+            "sha256": "c0da2cd3b8ba246fd6b44e14c2e1d12aead12544aa9a8cf714ddcaf286a8f440",
             "download": "https://raw.githubusercontent.com/NarraLeaf/Dictionaries/master/en.txt.gz",
-            "words": 104433
+            "words": 104503
         },
         {
             "code": "zh",
