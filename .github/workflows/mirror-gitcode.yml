@@ -1,0 +1,56 @@
+name: Mirror to GitCode
+
+# Copies this repository - master and every tag - to https://gitcode.com/NarraLeaf/Dictionaries.
+# NarraLeaf Studio reads the spelling dictionaries from either side: GitHub is unreachable or crawls from much of
+# mainland China, and Studio ships GitCode as a built-in second source that maps the catalogue's
+# GitHub addresses onto it. Every file the catalogue names is in the same commit as index.json, so
+# one push brings both. See the header of .github/scripts/gitcode-mirror.mjs.
+#
+# Runs on every push to master, and by hand from Actions > Mirror to GitCode > Run workflow. Each run
+# reconciles everything, so a run that was skipped or failed is caught up by the next. Nothing a fork
+# can trigger reaches the token: there is no pull_request trigger of any kind.
+#
+# GITCODE_TOKEN is a GitCode personal access token with read/write on Projects and Repository,
+# stored as a NarraLeaf organisation secret shared with this repository. It expires; a run that
+# fails with 401 needs a new one.
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mirror:
+    name: Mirror to GitCode
+    if: github.repository == 'NarraLeaf/Dictionaries'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # One run at a time: two runs pushing the same refs would race. A queued run is enough, since
+    # each one reconciles the whole repository.
+    concurrency:
+      group: gitcode-mirror
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: master
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Copy to GitCode
+        env:
+          GITCODE_TOKEN: ${{ secrets.GITCODE_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node .github/scripts/gitcode-mirror.mjs sync --branch master
+
+      # Reads the GitCode catalogue the way Studio does and checks every file it names.
+      - name: Check what GitCode serves
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node .github/scripts/gitcode-mirror.mjs verify --branch master
